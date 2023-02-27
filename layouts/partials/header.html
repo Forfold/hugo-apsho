@@ -6,6 +6,7 @@
         class="logo-main"
         src="{{ .Site.Params.logo | absURL }}"
         alt="logo-white"
+        style="width: 20%; height: 20%"
       />
     </a>
     {{ "<!-- Toogle Button -->" | safeHTML }}
@@ -20,21 +21,22 @@
       <span class="icon-bar"></span>
     </button>
     <div class="collapse navbar-collapse nav-list" id="mainNav">
-      {{ "<!-- Navigation Links -->" | safeHTML }}
-      
-      {{ $menu := .Site.Menus.main }}
+      {{ "<!-- Navigation Links -->" | safeHTML }} {{ $menu := .Site.Menus.main
+      }}
       <ul class="navbar-nav ml-auto">
-      {{ range $index, $element := $menu }}
+        {{ range $index, $element := $menu }}
         <li class="nav-item">
-          <a href="{{ $.Site.BaseURL }}{{ .URL }}" class="nav-link {{ if $.IsHome }}scroll{{ end }}">{{ .Name }}</a>
+          <a
+            href="{{ $.Site.BaseURL }}{{ .URL }}"
+            class="nav-link {{ if $.IsHome }}scroll{{ end }}"
+            >{{ .Name }}</a
+          >
         </li>
-      {{ end }}
+        {{ end }}
       </ul>
       <div class="account-list list-inline">
         <li class="list-inline-item">
-          <a href="{{ "contact" | absURL }}" class="btn btn-sm btn-violate">
-            Get in touch
-          </a>
+          <a href="/docs" class="btn btn-sm btn-violate">Documentation</a>
         </li>
       </div>
     </div>
